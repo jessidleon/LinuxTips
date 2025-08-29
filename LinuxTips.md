@@ -41,4 +41,30 @@ sudo update-locale LANG=en_US.UTF-8
 source /etc/default/locale
 ```
 
+# Install KVM
+```bash
+# verify virtualization support. If so, should return > 0
+egrep -c '(vmx|svm)' /proc/cpuinfo
+```
+
+```bash
+# install packages
+sudo apt update
+sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager
+
+# check that vkm is active. Should return running
+sudo systemctl status libvirtd
+
+# In case is not running:
+sudo systemctl enable --now libvirtd
+
+# Use as non-root user. After this, reboot
+sudo usermod -aG libvirt,kvm $USER
+
+# check installation
+virsh list --all
+
+# run 
+virt-manager
+```
 
