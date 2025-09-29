@@ -71,5 +71,6 @@ virt-manager
 Windows drivers can be found here:
 https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/
 
-
+# Activate windows 11
+irm https://get.activated.win | iex
 
